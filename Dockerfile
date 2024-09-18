@@ -10,12 +10,13 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zlib1g-dev \
     libzip-dev \
+    libpq-dev \
     git \
     unzip
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd pdo pdo_mysql
+RUN docker-php-ext-install gd pdo pdo_pgsql
 
 # Set the working directory
 WORKDIR /var/www
