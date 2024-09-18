@@ -27,10 +27,10 @@ COPY . .
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install PHP dependencies
-RUN composer install
+RUN composer install --no-dev --optimize-autoloader
 
 # Expose the port the app runs on
 EXPOSE 8080
 
-# Start the PHP-FPM server on port 8080
-CMD ["php-fpm", "--fpm-config", "/etc/php/8.2/fpm/pool.d/www.conf", "--port", "8080"]
+# Start the PHP built-in server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
