@@ -12,11 +12,13 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libpq-dev \
     git \
-    unzip
+    unzip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd pdo pdo_pgsql
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install gd pdo pdo_pgsql
 
 # Set the working directory
 WORKDIR /var/www
