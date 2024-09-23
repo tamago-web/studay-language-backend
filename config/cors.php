@@ -19,7 +19,10 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => [
+        env('FRONTEND_URL', 'http://localhost:3000'), // 環境変数から取得
+        'https://studay-language-frontend-tamago-webs-projects.vercel.app', // 固定値
+    ],
 
     'allowed_origins_patterns' => [],
 
