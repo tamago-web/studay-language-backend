@@ -32,9 +32,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Clear and cache Laravel config
-RUN php artisan config:clear && php artisan config:cache
-
 # Expose the port the app runs on
 EXPOSE 8080
 
